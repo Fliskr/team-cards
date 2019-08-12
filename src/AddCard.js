@@ -2,13 +2,14 @@ import React from "react";
 import Card from "./Card";
 import {withRouter} from "react-router-dom";
 import styled from "styled-components";
-
+import {Title} from "./Card";
 const Wrapper = styled.div`
     & > div {
-        cursor: pointer;
-        width: 565px;
+        border-style: dashed;
     }
-    color: gray;
+    ${Title} {
+        opacity: 0.5;
+    }
 `;
 
 function AddCard(props) {
