@@ -26,7 +26,8 @@ const Logo = styled.div`
     border-radius: 50%;
     width: 48px;
     height: 48px;
-    background: ${props => (props.src ? `url(${props.src}` : "lightgray")};
+    background: lightgray url(${({src = ""}) => src}) center;
+    background-size: 100%;
     display: block;
     margin: 20px 0 0 15px;
 `;
@@ -101,8 +102,8 @@ const MoreAvatars = styled.div`
 `;
 export default function Card({
     image = "",
-    title = "The Sell Outs",
-    description = "They'll sell anything to make a buck.",
+    title = "",
+    description = "",
     dashed = false,
     onClick = () => {},
     avatars = [],
@@ -117,8 +118,8 @@ export default function Card({
                 </Text>
             </Body>
             <Footer>
-                {avatars.slice(0, 9).map(({ src }, index) => (
-                    <Avatar key={index} image={src} />
+                {avatars.slice(0, 9).map(({ avatar }, index) => (
+                    <Avatar key={index} src={avatar} />
                 ))}
                 {!!avatars.slice(9).length && <MoreAvatars>{avatars.slice(9).length}</MoreAvatars>}
             </Footer>
